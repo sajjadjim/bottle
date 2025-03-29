@@ -13,7 +13,7 @@ const bottlePromise = bottleData()
 
   return (
     <>
-<Suspense fallback={<h1>data Loading....</h1>}>
+<Suspense fallback={<h1>Data Loading....</h1>}>
 <Bottles bottlePromise={bottlePromise}></Bottles>
 </Suspense>
     </>

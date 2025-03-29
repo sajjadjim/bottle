@@ -1,7 +1,11 @@
 import React from 'react';
 import './bottle.css'
-const bottle = ({bottle_single}) => {
-console.log(bottle_single)
+const bottle = ({bottle_single , handleCartBottle}) => {
+// console.log(bottle_single)
+const cartFunction =()=>{
+    handleCartBottle(bottle_single)
+}
+
     return (
         <div  className='bottle-body'>
             <div className='bottle-details'>
@@ -18,7 +22,7 @@ console.log(bottle_single)
                 <img style={{height:'200px', width:'200px'}} src={bottle_single.image}alt='image loading'></img>
             </div>
             </div>
-            <button>Buy Now</button>
+            <button onClick={cartFunction}>Buy Now</button>
         </div>
     );
 };
