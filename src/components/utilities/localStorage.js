@@ -1,7 +1,9 @@
-// If I want to store a Data Local storage we need to 3 function
-// 1.Add to the Local storage 
-// 2.Save To the Local Storage
-// 3.Get From Local Storage
+/*
+If I want to store a Data Local storage we need to 3 function
+1.Add to the Local storage 
+2.Save To the Local Storage
+3.Get From Local Storage
+*/
 
 // 1.Get item for call the local storage and get it the formate 
 const getFromLocalStorage = () =>{
@@ -20,6 +22,7 @@ const cartStringConvert =JSON.stringify(cart_item)
 localStorage.setItem('cart_item',cartStringConvert)
 }
 
+
 // 3.AT Last Use This For add item to the local storage 
 const addItemsToLocalstorage =id=>{
     const cart_item  = getFromLocalStorage();
@@ -27,4 +30,14 @@ const addItemsToLocalstorage =id=>{
     // This line send the data to store Local Storage 
     saveDataToLocalStorage(newCart)
 }
-export {addItemsToLocalstorage as addStoredCart , getFromLocalStorage as getItems}
+
+const removeFromStoreCart = (id) =>{
+  const storedCart = getFromLocalStorage()
+  const remainingCart = storedCart.filter(storeID => storeID !== id)
+  saveDataToLocalStorage(remainingCart)
+}
+
+
+export {addItemsToLocalstorage as addStoredCart , getFromLocalStorage as getItems
+  , removeFromStoreCart as removeCart
+}

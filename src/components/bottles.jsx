@@ -1,6 +1,6 @@
 import React, { use, useEffect, useState } from 'react';
 import Bottle from './bottle/bottle';
-import { addStoredCart , getItems } from './utilities/localStorage';
+import { addStoredCart , getItems , removeCart } from './utilities/localStorage';
 import './bottles.css'
 import Cart from './cart/cart';
 export default function Bottles ({bottlePromise}){
@@ -15,7 +15,7 @@ useEffect(()=>{
     for(let id of getCartItem){
         const cartBottle = bottles.find(bottles => bottles.id === id)
 
-        if(cartBottle){
+        if(cartBottle){ 
            storeCartBottle.push(cartBottle);
         }
     }
@@ -34,9 +34,10 @@ addStoredCart(bottle_single.id)
 
 // Remove the Cart Items From Cart 
 const handleCartItems = (id) =>{
-    console.log('Delete From Cart Item' ,id)
+    // console.log('Delete From Cart Item' ,id)
     const remainingCart = cartBottles.filter(bottles => bottles.id !== id )
     setCartBottle(remainingCart)
+    removeCart(id)
 }
 
     return (
@@ -44,7 +45,8 @@ const handleCartItems = (id) =>{
   <h1 style={{textAlign:'center'}}>Total Number of Bottle : {bottles.length}</h1>
   <h3>Add cart :{cartBottles.length}</h3>
 
-  <Cart cartBottles={cartBottles}
+  <Cart 
+  cartBottles={cartBottles}
   handleCartItems={handleCartItems}
   ></Cart>  
 
