@@ -50,7 +50,7 @@ const handleCartItems = (id) =>{
   handleCartItems={handleCartItems}
   ></Cart>  
 
-  <div className='bottles-single'>
+  <div className=' grid md:grid-cols-3 grid-cols-1'>
   {
     bottles.map(bottle_single=><Bottle 
       key={bottle_single.id} 
